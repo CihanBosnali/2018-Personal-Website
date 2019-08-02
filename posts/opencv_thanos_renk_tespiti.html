@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-139317028-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-139317028-1');
+  </script>
+
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>OpenCV Renk Tespiti ile Thanos’u Bulalım | Cihan Bosnalı</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom fonts for this template -->
+  <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+  <!-- Custom styles for this template -->
+  <link href="../css/clean-blog.min.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+   <!-- Navigation -->
+   <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand" href="../tr.html">Cihan Alperen Bosnalı</a>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        Menu
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="../tr.html">Anasayfa</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../hakkimda.html">Hakkımda</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../iletisim.html">İletişim</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../index.html">EN</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  <header class="masthead" style="background-image: url('../img/Thanos.jpg')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="post-heading">
+            <h1>OpenCV Renk Tespiti ile Thanos’u Bulalım!</h1>
+            <h2 class="subheading">Renkleri algılamak için Python ve OpenCV kullanalım.</h2>
+            <span class="meta">6 Mayıs 2019 tarihinde yayınlandı.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Post Content -->
+  <article>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <p>Herkese merhaba, Tony Stark’ın Thanos’u aramak için yeni bir sisteme ihtiyacı var. Thanos yaşayanların yarısını yok ettikten sonra başka bir gezegene kaçtı. Stark’ın drone'ları her yerde onu arıyorlar ama aldıkları görüntüleri analiz edip Thanos’un olup olmadığına karar verecek bir sistemleri yok! Bunu bizim yapmamızı istiyor.</p>
+
+          <p>Deli Titan’ı tespit etmek için mor rengini kullanacağız. Kullanacağımız yazılım dili Python ve kütüphanelerimiz OpenCV ile Numpy.</p>
+
+          <a href="../img/Thanos.jpg">
+            <img class="img-fluid" src="../img/Thanos.jpg" alt="">
+          </a>
+          <span class="caption text-muted"> Testlerimiz için <a href="https://www.theverge.com/2018/3/16/17130846/infinity-wars-trailer-thanos-cgi-supervillains-mcu-characters">bu fotoğrafı</a> kullanacağız.</span>
+
+          <p>Haydi başlayalım!</p>
+
+          <p>Öncelikle bilgisayarınızda Python, OpenCV ve Numpy yüklü olduğuna emin olun.</p>
+
+          <p>İlk önce gerekli kütüphanelerimizi kodumuza eklememiz gerekli:</p>
+
+          <pre><code>
+              import cv2
+              import numpy as np
+            </code></pre>
+
+          <p>Fotoğrafı almak, Thanos olma şansını hesaplamak ve bir cevap döndürmek için bir çalışma döngüsüne ihtiyacımız var. Bunu “run()” fonksiyonunda yapacağız.</p>
+
+          <pre><code>
+              def find_thanos(photo_name):
+                # Görüntüyü burada işleyeceğiz
+
+              def run():
+                  while True:
+                      photo_name = input()
+
+                      if photo_name == “”:
+                          break
+                      else:
+                          find_thanos(photo_name)
+              run()
+            </code></pre>
+
+          <p>Görüntüyü bilgisayarınızda kayıtlı adını kullanarak koda yüklememiz gerekiyor.</p>
+
+          <pre><code>
+            def find_thanos(photo_name):
+                # Bu kod satırı fotoğrafı okuyup kullanılabilir hale getirir
+                image = cv2.imread(photo_name)
+          </code></pre>
+
+          <p>Sonrasında renk uzayını değiştireceğiz.Renk uzayı, renkleri düzenlediğimiz bir sistem. Farklı durumlar için kullanabileceğiniz birkaç uzay var. Ancak, bence, OpenCV ile çalışması en kolay olan HSV. Hepsini <a href="https://docs.opencv.org/trunk/d8/d01/group__imgproc__color__conversions.html">burada</a> bulabilirsiniz.</p>
+
+          <pre><code>
+            def find_thanos(photo_name):
+                image = cv2.imread(photo_name)
+
+                # Renk uzayı değişimlerini yapacak olan fonksiyon
+                image = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
+          </code></pre>
+
+          <p>Bu işlemi, Thanos'un mor rengini kolayca tespit etmek için yaptık. Şimdi hangi piksellerin mor olduğunu bulabiliriz. HSV’nin açılımı Hue (Ton), Saturation (Doygunluk) ve Value (Değer).</p>
+          
+          <a href="../img/colorspaces.png">
+            <img class="img-fluid" src="../img/colorspaces.png" alt="">
+          </a>
+          <span class="caption text-muted"><a href="http://www.tadpolewebworks.com/web/atomic/highlights.html">Fotoğrafın kaynağı</a> için tıklayın.</span>
+
+          <p>Hue, bir açı değeridir. Rengi belirler. Saturation beyaz ile renklilik arasında bir değişimdir. Değer ise siyah ve renklilik arasında bir değişimdir. Python için maksimum değerler 360, 100 ve 100 yerine 180, 255 ve 255'tir.</p>
+          
+          <p>İki HSV değerini sınır olarak belirleyeceğiz ve OpenCV, görüntüde piksel değerlerinin sınırlarımız arasında nerede olduğunu tespit edecek. Bu değerleri genelde deneyerek buluyoruz.</p>
+
+          <pre><code>
+            # Mor renk için HSV sınır değerleri
+            lower_bound = np.array([40, 70, 70])
+            upper_bound = np.array([180, 255, 255])
+          </code></pre>   
+          
+          <p>Şimdi bu sınırları, mor rengi bulmak için kullanacağız. Bir Mask yapacağız. Mask (Maske), openCV'deki özel bir görüntü şekli. Bizim durumumuzda, eğer renk sınırlar arasındaysa maskedeki piksel beyaz olacaktır. Aksi takdirde, siyah olacaktır.</p>
+
+          <pre><code>
+            mask = cv2.inRange(image, lower_bound, upper_bound)
+          </code></pre>
+
+          <p>Kodumuzun Thanos'un rengini tespit edip edemediğini görelim.</p>
+
+          <pre><code>
+            # Resmi kullanıcıya göstermek için gereken kod
+            cv2.imshow(“mask”, mask)
+
+            # Kodu durdurup boşluk tuşuna basmanızı bekleyen kod
+            cv2.waitKey(0)
+          </code></pre>
+
+          <p>Test fotoğrafımızın maskesi bu şekilde oldu:</p>
+          <a href="../img/thanos_masked_opencv.png">
+            <img class="img-fluid" src="../img/thanos_masked_opencv.png" alt="">
+          </a>
+          <span class="caption text-muted">Mor renkle maskelenmiş Thanos.</span>
+
+          <p>Çok iyi görünüyor 👍</p>
+
+          <p>Ama Stark’ın makinelerinin bu resmi anlayabilmesini nasıl sağlayacağız? Birkaç satır kod ekleyelim. Basitçe, beyaz piksellerin tüm resme olan oranını bulacağız. Eğer mor renk oranı yükselirse, Thanos olma ihtimali yükselir diyeceğiz.</p>
+          
+          <pre><code>
+            # Toplam kaç piksel olduğunu bulalım
+            num_of_pixels = mask.shape[0] * mask.shape[1]
+
+            # Beyaz olanların sayısını bulalım
+            num_of_white = np.sum(mask == 255)
+
+            # Oranı hesaplayalım
+            ratio = num_of_white / num_of_pixels
+          </code></pre>
+
+          <p>O zaman, yüksek olasılıkla Thanos var diyorsak bu veriyi Yenilmezler ekibinin görebilmesi için yazdıralım.</p>
+
+          <pre><code>
+            if ratio > 0.2:
+                print("I found someone like Thanos! The probability is", ratio*100, "%") # Thanos olabilir
+            else:
+                print("Not Thanos. The probability is", ratio*100, "%”) # Thanos değildir
+          </code></pre>
+
+          <p>Kodumuz çalışıyor gibi görünüyor! Bazı test sonuçları burada:</p>
+
+          <a href="../img/cap_hulk_thanos_test_opencv.png">
+            <img class="img-fluid" src="../img/cap_hulk_thanos_test_opencv.png" alt="">
+          </a>
+
+          <p>Okuduğunuz için teşekkürler. Sonraki yazılarda görüşmek üzere!</p>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <hr>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <ul class="list-inline text-center">
+            <li class="list-inline-item">
+              <a href="#">
+                <span class="fa-stack fa-lg">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+            <li class="list-inline-item">
+              <a href="#">
+                <span class="fa-stack fa-lg">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fab fa-facebook-f fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+            <li class="list-inline-item">
+              <a href="#">
+                <span class="fa-stack fa-lg">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+          </ul>
+          <p class="copyright text-muted">Copyright &copy; Cihan Alperen Bosnalı 2019</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="../vendor/jquery/jquery.min.js"></script>
+  <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Custom scripts for this template -->
+  <script src="../js/clean-blog.min.js"></script>
+
+</body>
+
+</html>

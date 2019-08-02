@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-139317028-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-139317028-1');
+  </script>
+
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Find Thanos with OpenCV Color Detection | Cihan Bosnalı</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom fonts for this template -->
+  <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+  <!-- Custom styles for this template -->
+  <link href="../css/clean-blog.min.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+   <!-- Navigation -->
+   <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand" href="../index.html">Cihan Alperen Bosnalı</a>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        Menu
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="../index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../about.html">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../contact.html">Contact</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../tr.html">TR</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  <header class="masthead" style="background-image: url('../img/Thanos.jpg')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="post-heading">
+            <h1>Find Thanos with OpenCV Color Detection</h1>
+            <h2 class="subheading">Use OpenCV and Python to detect Thanos' purple color.</h2>
+            <span class="meta">Posted on May 6, 2019</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Post Content -->
+  <article>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <p>Hi everyone, Tony called me and said that he needs a new tech to find Thanos. Thanos escaped to another planet after destroying the half of living creatures. Stark’s drones are flying to other planets and taking pictures but they don’t have a program to analyze pics and detect Thanos. Tony wanted us to do this job for him.</p>
+
+          <p>We will use the mad titan’s purple color to detect him. We’ll use python language and openCV library.</p>
+
+          <a href="../img/Thanos.jpg">
+            <img class="img-fluid" src="../img/Thanos.jpg" alt="">
+          </a>
+          <span class="caption text-muted"> We will use <a href="https://www.theverge.com/2018/3/16/17130846/infinity-wars-trailer-thanos-cgi-supervillains-mcu-characters">this photo</a> for tests.</span>
+
+          <p>Let’s start!</p>
+
+          <p>Be sure that you have Python, OpenCV and Numpy installed to your computer.</p>
+
+          <p>First of all, we need to import libraries to our code:</p>
+
+          <pre><code>
+              import cv2
+              import numpy as np
+            </code></pre>
+
+          <p>We need a pipeline to get photos, calculate their chance to be Thanos and give an answer to us. We will have a function to run the job.</p>
+
+          <pre><code>
+              def find_thanos(photo_name):
+                # We will write everything inside this function.
+
+              def run():
+                  while True:
+                      photo_name = input()
+
+                      if photo_name == “”:
+                          break
+                      else:
+                          find_thanos(photo_name)
+              run()
+            </code></pre>
+
+          <p>We need to load the image using its name on your computer.</p>
+
+          <pre><code>
+            def find_thanos(photo_name):
+                # This line of code is used to load image
+                image = cv2.imread(photo_name)
+          </code></pre>
+
+          <p>Then, we will change the colorspace. A colorspace is the order of colors. There are a few spaces that you can use for different situations. I think HSV is the easiest if you are working with OpenCV. There are other options that you can try. See all <a href="https://docs.opencv.org/trunk/d8/d01/group__imgproc__color__conversions.html">options</a>.</p>
+
+          <pre><code>
+            def find_thanos(photo_name):
+                image = cv2.imread(photo_name)
+
+                # This is a function to convert colorspaces in openCV
+                image = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
+          </code></pre>
+
+          <p>We made this operation to easily detect purple color of Thanos. Now, we can find out which pixels are purple. HSV colorspace means Hue, Saturation and Value.</p>
+          
+          <a href="../img/colorspaces.png">
+            <img class="img-fluid" src="../img/colorspaces.png" alt="">
+          </a>
+          <span class="caption text-muted"><a href="http://www.tadpolewebworks.com/web/atomic/highlights.html">Click here</a> for photo credit.</span>
+
+          <p>Hue is the angle value. It determines the color. Saturation is a slider between white and color. Value is a slider between black and the color. The max values are 180, 255 and 255 for python instead of 360, 100 and 100.</p>
+          
+          <p>We will determine two HSV values as boundaries and OpenCV will detect where in the image, the pixel values are between our boundaries. We mostly find these values by trying.</p>
+
+          <pre><code>
+            # HSV boundaries for purple color
+            lower_bound = np.array([40, 70, 70])
+            upper_bound = np.array([180, 255, 255])
+          </code></pre>   
+          
+          <p>Now, we will use these boundaries to find purple color. It will create a mask. A mask is a special image in openCV.  For our case, if color is between boundaries, the pixel will be white. Otherwise, it will be black.</p>
+
+          <pre><code>
+            mask = cv2.inRange(image, lower_bound, upper_bound)
+          </code></pre>
+
+          <p>Let’s see if our code can detect the mad titan’s color or not.</p>
+
+          <pre><code>
+            # Show the images to the user.
+            cv2.imshow(“mask”, mask)
+
+            # Stop the code. Wait for the user to press the space button.
+            cv2.waitKey(0)
+          </code></pre>
+
+          <p>There is the mask of our test photo:</p>
+          <a href="../img/thanos_masked_opencv.png">
+            <img class="img-fluid" src="../img/thanos_masked_opencv.png" alt="">
+          </a>
+          <span class="caption text-muted">Purple masked image of Thanos.</span>
+
+          <p>It is pretty good 👍</p>
+
+          <p>But how can machines understand that this is Thanos? Let’s add some code. We will find the ratio of white pixels to all. If the ratio of purple color increases, then the probability of being Thanos increases.</p>
+
+          <pre><code>
+            # Find how many pixels are in the image
+            num_of_pixels = mask.shape[0] * mask.shape[1]
+
+            # Calculate the number of white ones.
+            num_of_white = np.sum(mask == 255)
+
+            # Calculate the ratio
+            ratio = num_of_white / num_of_pixels
+          </code></pre>
+
+          <p>Then we can use a simple if statement to print the data to Avengers when the probability is high.</p>
+
+          <pre><code>
+            if ratio > 0.2:
+                print("I found someone like Thanos! The probability is", ratio*100, "%")
+            else:
+                print("Not Thanos. The probability is", ratio*100, "%”)
+          </code></pre>
+
+          <p>It looks like our code works! There are some test results.</p>
+
+          <a href="../img/cap_hulk_thanos_test_opencv.png">
+            <img class="img-fluid" src="../img/cap_hulk_thanos_test_opencv.png" alt="">
+          </a>
+
+          <p>Thanks for reading. Goodbye.</p>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <hr>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <ul class="list-inline text-center">
+            <li class="list-inline-item">
+              <a href="#">
+                <span class="fa-stack fa-lg">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+            <li class="list-inline-item">
+              <a href="#">
+                <span class="fa-stack fa-lg">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fab fa-facebook-f fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+            <li class="list-inline-item">
+              <a href="#">
+                <span class="fa-stack fa-lg">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+          </ul>
+          <p class="copyright text-muted">Copyright &copy; Cihan Alperen Bosnalı 2019</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="../vendor/jquery/jquery.min.js"></script>
+  <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Custom scripts for this template -->
+  <script src="../js/clean-blog.min.js"></script>
+
+</body>
+
+</html>

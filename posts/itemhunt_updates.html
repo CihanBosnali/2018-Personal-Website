@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-139317028-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-139317028-1');
+  </script>
+
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Updates about ItemHunt | Cihan Bosnalı</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom fonts for this template -->
+  <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+  <!-- Custom styles for this template -->
+  <link href="../css/clean-blog.min.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+   <!-- Navigation -->
+   <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand" href="../index.html">Cihan Alperen Bosnalı</a>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        Menu
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="../index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../about.html">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../contact.html">Contact</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../tr.html">TR</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  <header class="masthead" style="background-image: url('../img/logo_wide.png')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="post-heading">
+            <h1>Updates About ItemHunt</h1>
+            <h2 class="subheading">What are we doing in the backend of my startup, ItemHunt?</h2>
+            <span class="meta">Posted on June 4, 2019.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Post Content -->
+  <article>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <p>Hello everyone,</p>
+
+          <p>I had a lot to do in last month both about my startup and my startup. Therefore, I couldn’t write much.</p>
+
+          <p>ItemHunt is the startup which I’m working on for the last 8 months. We started to do more updates with the significant decrease in our school work. We are updating the iOS app, uploading videos to YouTube. We are working a lot! Even though these are the first steps of our company, we are experiencing what is entrepreneurship and we are learning to do real work. That is exciting for all of us.</p>
+          
+          <p>If you want to learn more about ItemHunt, <a href="https://itemhunt.co">click to this link</a> 🙂.</p>
+          
+          <h2 class="section-heading">Then, what is happening?</h2>
+
+          <p>I hope, I will publish a post about my entrepreneurship adventure, but this blog post is more about what are we doing to carry ItemHunt forward.</p>
+
+          <p>ItemHunt is a startup. We have expenses, we have revenues…I wish I could say this, but no. That is our problem. We can’t earn money.</p>
+
+          <p>It is hard to earn money if you are providing a service as a product. Your customer won’t get a solid product. Therefore, it is hard to work with a business model such as “cost + profit = price”. The cost will increase after you sold the service. For example, you can have servers which keep your website and databases. We are using one of Google’s cloud solutions for ItemHunt. It has a cost per operation on the server. Therefore, it is hard to estimate the cost because it changes accordingly to the usage. We want to build an annual subscription method. I think, our service has a price like $1.99 per user. For now, full service is open for everyone because of marketing purposes. We are using the free plan of Google’s service because we don’t have enough users the break the usage limit of the free plan.</p>
+          
+          <p>Advertisement revenues? What are they? Of course, I put some ads into the app. What is the result? ₺0.01 in one month 👏. Dear friends, if you are a new startup, you must know that you won’t earn enough money from ads. Why do even the biggest mobile game companies put a lot of ads? If the ads are your business model, you need many users who use your app daily and you need to show many ads to them. It is really hard for an education startup like us.</p>
+          
+          <a href="../img/ads-ads-everywhere.jpg">
+            <img class="img-fluid" src="../img/ads-ads-everywhere.jpg" alt="">
+          </a>
+          <span class="caption text-muted"><a href="https://makeameme.org/meme/ads-ads-everywhere-5a2a5e">Click</a> for the image source.</span>
+
+          <p>Let’s return to the first one, annual subscription. I said “...because of marketing purposes.” right? That is one part of the problem but the main problem is we need to redesign the software to earn money. Now, I’m working on our app to solve some problems and optimize the systems working on the background of our service.</p>
+
+          <p>Let me give an example. We have the feature of “Leaderboards” in our app. I wanted to have this feature but I didn’t aware of how kind of problem did I start.
+          </br>   1 - When the user looks at the leaderboards, I need to do a query in the database and sort them by score. I give some money to Google for every database operation. Unnecessary cost.
+          </br>   2 - You need to be authenticated to have access to the database. My code uses users account to look at every user’s score. We need to block some parts of access to the database by accounts. Unnecessary complexity.
+          </p>
+
+          <p>When making the 1.2 update of the app, I chose to use Apple Game Center instead of my custom system. It was more basic and way more optimized. That isn’t the only problem. We will make premium some part of it after we are sure we don’t have important problems.</p>
+
+          <p>Another issue is to increase the number of users. We are trying to increase it by meeting with some institutions. I can’t say a lot about this one.</p>
+          
+          <p>Entrepreneurship is a really interesting adventure. I had done many projects, I wrote many lines of code, and I continue to do projects. On the other hand, I learned that a Startup is very different than a project. I’m getting tired but I’m also happy about it 🙂.</p>
+          
+          <p>I hope you enjoy reading my blog. Have a nice day! </p>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <hr>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <ul class="list-inline text-center">
+            <li class="list-inline-item">
+              <a href="#">
+                <span class="fa-stack fa-lg">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+            <li class="list-inline-item">
+              <a href="#">
+                <span class="fa-stack fa-lg">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fab fa-facebook-f fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+            <li class="list-inline-item">
+              <a href="#">
+                <span class="fa-stack fa-lg">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+          </ul>
+          <p class="copyright text-muted">Copyright &copy; Cihan Alperen Bosnalı 2019</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="../vendor/jquery/jquery.min.js"></script>
+  <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Custom scripts for this template -->
+  <script src="../js/clean-blog.min.js"></script>
+
+</body>
+
+</html>
